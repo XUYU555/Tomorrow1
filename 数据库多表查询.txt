@@ -1,0 +1,14 @@
+#外连接
+select * from tb_emp,tb_dept where tb_emp.dept_id=tb_dept.id;
+#内连接
+select * from tb_emp inner join tb_dept td on tb_emp.dept_id = td.id;
+#左连接
+select tb_emp.name,tb_dept.name from tb_emp left join tb_dept on tb_emp.dept_id=tb_dept.id;
+#右连接
+select tb_emp.name,tb_dept.name from tb_emp right join tb_dept on tb_emp.dept_id=tb_dept.id;
+#子查询(单个数据)
+select tb_emp.name,tb_emp.dept_id from tb_emp where dept_id=(select tb_dept.id from tb_dept where tb_dept.id=1);
+#子查询(一行数据)
+select * from tb_emp where (name,dept_id)=(select name,dept_id from tb_emp where name='张三');
+#子查询(一列数据 in)
+select * from tb_emp where tb_emp.dept_id in (2,3,4);
